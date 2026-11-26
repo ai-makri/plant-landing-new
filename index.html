@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Зелёный Бутик — растения премиум-класса с доставкой на дом | Санкт-Петербург</title>
+<meta name="description" content="Редкие комнатные растения в дизайнерских горшках с доставкой на завтра по Санкт-Петербургу. Отборные экземпляры, безопасная упаковка, консультация по уходу.">
+<style>
+  :root{
+    --bg:#F6F4F0; --accent:#4A7C59; --accent-dark:#3A6347; --terra:#D35400;
+    --text:#2C2C2C; --muted:#6B6B6B; --card:#FFFFFF; --line:#E5E0D8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  h1,h2,h3{font-family:'Georgia',serif;line-height:1.25}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+  section{padding:64px 0}
+  .kicker{display:inline-block;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;font-weight:600}
+  h2{font-size:34px;margin-bottom:16px}
+  .lead{color:var(--muted);max-width:640px;font-size:17px}
+  .btn{display:inline-block;padding:16px 36px;border-radius:12px;font-size:16px;font-weight:600;text-decoration:none;transition:.2s;cursor:pointer;border:none}
+  .btn-accent{background:var(--accent);color:#fff}
+  .btn-accent:hover{background:var(--accent-dark)}
+  .btn-terra{background:var(--terra);color:#fff}
+  .btn-terra:hover{background:#B84400}
+
+  /* HERO */
+  header{background:linear-gradient(180deg,#EAF1EA 0%,var(--bg) 100%);padding:80px 0 60px}
+  .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+  .hero h1{font-size:46px;margin:16px 0 20px}
+  .hero p{font-size:18px;color:var(--muted);margin-bottom:28px}
+  .hero-note{font-size:14px;color:var(--muted);margin-top:14px}
+  .hero-img{border-radius:20px;overflow:hidden;box-shadow:0 24px 48px rgba(44,44,44,.12)}
+  .hero-img img{width:100%;height:420px;object-fit:cover;display:block}
+
+  /* NUMBERS */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
+  .stat{background:var(--card);border-radius:16px;padding:24px;text-align:center;border:1px solid var(--line)}
+  .stat b{display:block;font-size:28px;color:var(--accent)}
+  .stat span{font-size:14px;color:var(--muted)}
+
+  /* FEATURES */
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .card{background:var(--card);border-radius:16px;padding:28px;border:1px solid var(--line)}
+  .card .ico{font-size:28px;margin-bottom:12px}
+  .card h3{font-size:18px;margin-bottom:8px}
+  .card p{font-size:14px;color:var(--muted)}
+
+  /* CATALOG */
+  .cats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:36px}
+  .plant{background:var(--card);border-radius:18px;overflow:hidden;border:1px solid var(--line);display:flex;flex-direction:column;transition:.2s}
+  .plant:hover{box-shadow:0 12px 28px rgba(44,44,44,.1)}
+  .plant .ph{height:200px;background:linear-gradient(135deg,#DDE8DD,#C5D8C5);display:flex;align-items:center;justify-content:center;font-size:64px}
+  .plant .info{padding:20px;display:flex;flex-direction:column;flex:1}
+  .tag{display:inline-block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;background:#EAF1EA;color:var(--accent);padding:4px 10px;border-radius:20px;align-self:flex-start;margin-bottom:10px;font-weight:600}
+  .plant h3{font-size:20px;margin-bottom:6px}
+  .plant .desc{font-size:14px;color:var(--muted);flex:1}
+  .plant .price-row{display:flex;justify-content:space-between;align-items:center;margin-top:16px}
+  .price{font-size:20px;font-weight:700;color:var(--accent)}
+  .old-price{font-size:14px;color:var(--muted);text-decoration:line-through;margin-right:8px}
+  .plant-note{text-align:center;color:var(--muted);font-size:14px;margin-top:24px}
+
+  /* GIFTS */
+  .gift-cats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:32px}
+  .gift{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;text-align:center}
+  .gift .ico{font-size:32px;margin-bottom:8px}
+  .gift b{display:block;font-size:15px}
+
+  /* FAQ */
+  .faq-item{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:14px;overflow:hidden}
+  .faq-item summary{padding:18px 22px;font-weight:600;cursor:pointer;list-style:none;position:relative}
+  .faq-item summary::-webkit-details-marker{display:none}
+  .faq-item summary::after{content:'+';position:absolute;right:20px;color:var(--accent);font-size:22px}
+  .faq-item[open] summary::after{content:'–'}
+  .faq-item p{padding:0 22px 18px;color:var(--muted);font-size:15px}
+
+  /* STEPS */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px}
+  .step{background:var(--card);border-radius:16px;padding:28px;border:1px solid var(--line);position:relative}
+  .step .num{width:40px;height:40px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;margin-bottom:14px}
+
+  /* ABOUT STORE */
+  .about{background:var(--card);border-radius:20px;padding:48px;border:1px solid var(--line)}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+  .about ul{list-style:none;margin-top:16px}
+  .about li{padding:6px 0 6px 28px;position:relative;color:var(--muted);font-size:15px}
+  .about li::before{content:'✓';position:absolute;left:0;color:var(--accent);font-weight:700}
+  .store-contacts{background:#EAF1EA;border-radius:16px;padding:28px}
+  .store-contacts h3{margin-bottom:14px}
+  .store-contacts p{padding:5px 0;font-size:15px}
+  .store-contacts b{color:var(--text)}
+
+  /* CTA */
+  .cta{background:var(--accent);border-radius:24px;padding:64px 48px;color:#fff;text-align:center}
+  .cta h2{color:#fff}
+  .cta p{color:#DCE8DE;max-width:560px;margin:0 auto 28px}
+  .cta .btn{background:#fff;color:var(--accent)}
+
+  footer{padding:40px 0;text-align:center;color:var(--muted);font-size:14px}
+
+  @media(max-width:900px){
+    .hero,.about-grid{grid-template-columns:1fr}
+    .cards,.cats,.steps{grid-template-columns:1fr 1fr}
+    .gift-cats{grid-template-columns:1fr 1fr}
+    .stats{grid-template-columns:1fr 1fr 1fr}
+    h1{font-size:34px} h2{font-size:26px}
+  }
+  @media(max-width:600px){
+    .cards,.cats,.steps,.gift-cats{grid-template-columns:1fr}
+    .stats{grid-template-columns:1fr}
+    section{padding:44px 0}
+    .cta{padding:44px 24px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== ГЛАВНЫЙ ЭКРАН ===== -->
+<header id="top">
+  <div class="wrap hero">
+    <div>
+      <span class="kicker">Доставка на завтра по Санкт-Петербургу</span>
+      <h1>Растения премиум-класса с доставкой на дом — ваш уголок природы без лишних забот</h1>
+      <p>Редкие сорта комнатных растений в дизайнерских горшках — как из парижского бутика. Каждое растение проходит строгий отбор: только здоровые, крепкие экземпляры с идеальной кроной.</p>
+      <a class="btn btn-accent" href="#catalog">Открыть каталог</a>
+      <div class="hero-note">Выберите растение онлайн — привезём к вашей двери уже завтра</div>
+    </div>
+    <div class="hero-img"><img src="https://images.unsplash.com/photo-1512428813834-c702c7702b78?w=800&q=80" alt="Комнатное растение в интерьере"></div>
+  </div>
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><b>1 000+</b><span>заказов доставлено без потерь</span></div>
+      <div class="stat"><b>1 день</b><span>срок доставки по Санкт-Петербургу</span></div>
+      <div class="stat"><b>100%</b><span>растений — ручной отбор перед отправкой</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== ПРЕИМУЩЕСТВА ===== -->
+<section>
+  <div class="wrap">
+    <span class="kicker">Почему выбирают нас</span>
+    <h2>Забота о каждом растении — от оранжереи до вашей полки</h2>
+    <div class="cards">
+      <div class="card"><div class="ico">🌿</div><h3>Строгий отбор</h3><p>Только здоровые экземпляры с идеальной кроной. Слабые растения до отправки не доходят.</p></div>
+      <div class="card"><div class="ico">📦</div><h3>Безопасная упаковка</h3><p>Жёсткая коробка с фиксацией горшка — растение доедет целым, подтверждено тысячей заказов.</p></div>
+      <div class="card"><div class="ico">💬</div><h3>Консультант на связи</h3><p>Инструкция по уходу в комплекте. Если что-то пошло не так — поможем спасти растение.</p></div>
+      <div class="card"><div class="ico">🚚</div><h3>Доставка на завтра</h3><p>Не нужно ехать на рынок — оформите заказ онлайн, и завтра зелёный друг уже дома.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== КАТАЛОГ ===== -->
+<section id="catalog">
+  <div class="wrap">
+    <span class="kicker">Каталог</span>
+    <h2>Элитная коллекция: растения — акцент в вашем интерьере</h2>
+    <p class="lead">Пальмы, фикусы, монстеры — каждое растение в стильном керамическом горшке, подобранном дизайнером. Это не просто зелень — это арт-объект для вашего дома.</p>
+    <div class="cats">
+
+      <div class="plant">
+        <div class="ph">🪴</div>
+        <div class="info">
+          <span class="tag">Хит продаж</span>
+          <h3>Монстера деликатесная</h3>
+          <p class="desc">Крупные резные листья, высота 80–100 см. В дизайнерском керамическом горшке. Неприхотлива — подходит новичкам.</p>
+          <div class="price-row"><span><span class="old-price">7 900 ₽</span><span class="price">6 490 ₽</span></span><a class="btn btn-accent" href="#cta">Купить</a></div>
+        </div>
+      </div>
+
+      <div class="plant">
+        <div class="ph">🌱</div>
+        <div class="info">
+          <span class="tag">Арт-объект</span>
+          <h3>Фикус лирата</h3>
+          <p class="desc">Скриптовидные листья — звезда сканди- и лофт-интерьеров. Высота 90–110 см, керамический горшок из коллекции дизайнера.</p>
+          <div class="price-row"><span class="price">8 990 ₽</span><a class="btn btn-accent" href="#cta">Купить</a></div>
+        </div>
+      </div>
+
+      <div class="plant">
+        <div class="ph">🌴</div>
+        <div class="info">
+          <span class="tag">Классика</span>
+          <h3>Пальма арека</h3>
+          <p class="desc">Изящная перистая листва, высота 100–120 см. Очищает воздух, отлично смотрится в классических интерьерах.</p>
+          <div class="price-row"><span class="price">7 490 ₽</span><a class="btn btn-accent" href="#cta">Купить</a></div>
+        </div>
+      </div>
+
+      <div class="plant">
+        <div class="ph">🌸</div>
+        <div class="info">
+          <span class="tag">Для подарка</span>
+          <h3>Орхидея фаленопсис</h3>
+          <p class="desc">Цветёт 2–3 месяца, радует и цветением, и ароматом. Универсальный подарок — в элегантной упаковке и с открыткой.</p>
+          <div class="price-row"><span class="price">3 990 ₽</span><a class="btn btn-accent" href="#cta">Купить</a></div>
+        </div>
+      </div>
+
+      <div class="plant">
+        <div class="ph">🍊</div>
+        <div class="info">
+          <span class="tag">Аромат</span>
+          <h3>Мини-цитрусовое дерево</h3>
+          <p class="desc">Каламондин с плодами и цветами одновременно. Живой подарок с характером — растёт и напоминает о вас годами.</p>
+          <div class="price-row"><span class="price">5 490 ₽</span><a class="btn btn-accent" href="#cta">Купить</a></div>
+        </div>
+      </div>
+
+      <div class="plant">
+        <div class="ph">🌵</div>
+        <div class="info">
+          <span class="tag">Компактно</span>
+          <h3>Набор суккулентов</h3>
+          <p class="desc">Три суккулента в керамических кашпо. Минимум ухода, максимум стиля — для полки, стола или офиса.</p>
+          <div class="price-row"><span class="price">2 290 ₽</span><a class="btn btn-accent" href="#cta">Купить</a></div>
+        </div>
+      </div>
+
+    </div>
+    <p class="plant-note">Показана часть коллекции — полный ассортимент и наличие смотрите в каталоге магазина по кнопке ниже.</p>
+    <div style="text-align:center;margin-top:8px"><a class="btn btn-accent" href="#cta">Смотреть всю коллекцию</a></div>
+  </div>
+</section>
+
+<!-- ===== ПОДАРОЧНЫЕ КАТЕГОРИИ ===== -->
+<section id="gifts">
+  <div class="wrap">
+    <span class="kicker">Подарок с характером</span>
+    <h2>Живой подарок — для тех, у кого «всё есть»</h2>
+    <p class="lead">Не нужно ломать голову над подарком: готовые решения от компактных суккулентов до роскошных драцен. Доставка по Санкт-Петербургу в день заказа или к выбранной дате. Добавим открытку с вашим персональным сообщением.</p>
+    <div class="gift-cats">
+      <div class="gift"><div class="ico">💼</div><b>Для коллеги</b></div>
+      <div class="gift"><div class="ico">💐</div><b>Для мамы</b></div>
+      <div class="gift"><div class="ico">❤️</div><b>Романтический сюрприз</b></div>
+      <div class="gift"><div class="ico">🏠</div><b>Новоселье</b></div>
+    </div>
+    <div style="text-align:center;margin-top:32px"><a class="btn btn-terra" href="#cta">Подобрать подарок</a></div>
+  </div>
+</section>
+
+<!-- ===== ВОЗРАЖЕНИЯ / FAQ ===== -->
+<section id="faq">
+  <div class="wrap">
+    <span class="kicker">Частые вопросы</span>
+    <h2>Отвечаем на сомнения честно</h2>
+
+    <details class="faq-item" open>
+      <summary>«Слишком дорого для комнатного растения»</summary>
+      <p>Цена оправдана: вы платите не только за здоровое растение, но и за подбор, консультацию и доставку. Это инвестиция в уют на годы вперёд. В обычных магазинах дешевле — но там массовые экземпляры без гарантии здоровья, а дизайнерский горшок пришлось бы покупать отдельно.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>«А если оно погибнет — деньги на ветер?»</summary>
+      <p>Мы даём подробную инструкцию по уходу, а наш консультант всегда на связи. Подберём неприхотливый вид под ваш микроклимат. Если возникнут сложности — поможем спасти растение.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>«Доставка может повредить растение»</summary>
+      <p>Мы упаковываем каждое растение в жёсткую коробку с фиксацией горшка, чтобы исключить повреждения. Опыт доставки — более 1 000 заказов без потерь.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>«Не уверен, что впишется в интерьер»</summary>
+      <p>Наш консультант пришлёт фото растения в интерьере, похожем на ваш, или поможет подобрать вариант под стиль: сканди, лофт, классика. Отметьте 2–3 растения, которые вам понравились, — и мы поможем с окончательным выбором.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>«Получатель может не любить растения»</summary>
+      <p>Подберём универсальный вариант — например, цветущую орхидею или миниатюрное цитрусовое дерево, которое радует и цветением, и ароматом. К подарку приложим мини-инструкцию по уходу.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>«Лучше подарить что-то материальное, а не „живое“»</summary>
+      <p>Наше растение — это долгосрочный подарок: оно растёт, меняется и становится частью дома, напоминая о вас годами.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ===== О МАГАЗИНЕ ===== -->
+<section id="about">
+  <div class="wrap">
+    <span class="kicker">О магазине</span>
+    <h2>«Зелёный Бутик» — растения, которым доверяют</h2>
+    <div class="about">
+      <div class="about-grid">
+        <div>
+          <p class="lead">Мы — команда флористов-озеленителей из Санкт-Петербурга. Более 1 000 заказов, сотни благодарных отзывов и один принцип: растение должно доехать до дома в том же состоянии, в котором росло у нас.</p>
+          <ul>
+            <li>Собственная оранжерея и ручной отбор каждого экземпляра</li>
+            <li>Дизайнерские керамические горшки в комплекте — менять не придётся</li>
+            <li>Инструкция по уходу и бесплатная консультация с каждым заказом</li>
+            <li>Бережная упаковка: жёсткая коробка с фиксацией горшка</li>
+            <li>Доставка по всему Санкт-Петербургу на завтра или к выбранной дате</li>
+          </ul>
+        </div>
+        <div class="store-contacts">
+          <h3>Контакты</h3>
+          <p>📍 <b>Адрес:</b> Санкт-Петербург, ул. Примерная, д. 1 <em>(укажите ваш адрес)</em></p>
+          <p>🕐 <b>Часы работы:</b> ежедневно 10:00–20:00 <em>(укажите ваши)</em></p>
+          <p>📞 <b>Телефон:</b> <a href="tel:+79990000000">+7 (999) 000-00-00</a> <em>(укажите ваш)</em></p>
+          <p>✈️ <b>Telegram:</b> <a href="https://t.me/username">@username</a> <em>(укажите ваш)</em></p>
+          <p>✉️ <b>E-mail:</b> <a href="mailto:hello@example.com">hello@example.com</a> <em>(укажите ваш)</em></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== КАК ЗАКАЗАТЬ ===== -->
+<section>
+  <div class="wrap">
+    <span class="kicker">Как это работает</span>
+    <h2>Три шага — и завтра растение дома</h2>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h3>Выберите растение</h3><p>Откройте каталог, просмотрите фото коллекции и отметьте 2–3 варианта, которые подходят под стиль вашего интерьера.</p></div>
+      <div class="step"><div class="num">2</div><h3>Подтвердите заказ</h3><p>Консультант поможет с окончательным выбором. Укажите адрес в Санкт-Петербурге и дату доставки.</p></div>
+      <div class="step"><div class="num">3</div><h3>Получите завтра</h3><p>Бережно упакованное растение привезём к вашей двери. С открыткой, инструкцией по уходу и горшком.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section id="cta">
+  <div class="wrap">
+    <div class="cta">
+      <span class="kicker" style="color:#DCE8DE">Ваш зелёный друг ждёт</span>
+      <h2>Уже завтра ваш новый зелёный друг будет дома</h2>
+      <p>Перейдите в онлайн-каталог, выберите растение, которое вам понравилось, и оформите заказ с доставкой на завтра. Просто укажите адрес в Санкт-Петербурге — всё остальное сделаем мы.</p>
+      <a class="btn" href="https://example.com/catalog">Перейти в каталог</a>
+      <p style="margin-top:20px;font-size:14px">или напишите нам в чат — поможем подобрать растение под ваш интерьер</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>«Зелёный Бутик» © 2026 · Санкт-Петербург · Доставка растений по городу</p>
+    <p>Примерная ул., 1 · <a href="tel:+79990000000">+7 (999) 000-00-00</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
